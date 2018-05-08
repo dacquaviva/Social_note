@@ -1,14 +1,29 @@
-<h2>Log in</h2>
+<div class="limiter">
+  <div class="container-login100">
+    <div class="wrap-login100">
+      <div class="login100-pic js-tilt" data-tilt>
+        <img src="<%= image_path('note.svg')%>" alt="IMG">
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      </div>
+<%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "login100-form validate-form"}) do |f| %>
+  <span class="login100-form-title">
+    Login
+  </span>
+
+  <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+    <%= f.email_field :email, autofocus: true, autocomplete: "email",class: 'input100' %>
+    <span class="focus-input100"></span>
+    <span class="symbol-input100">
+      <i class="fa fa-envelope" aria-hidden="true"></i>
+    </span>
   </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+  <div class="wrap-input100 validate-input" data-validate = "Password is required">
+    <%= f.password_field :password, autofocus: true, autocomplete: "off",class: 'input100' %>
+    <span class="focus-input100"></span>
+    <span class="symbol-input100">
+      <i class="fa fa-lock" aria-hidden="true"></i>
+    </span>
   </div>
 
   <% if devise_mapping.rememberable? -%>
@@ -18,9 +33,20 @@
     </div>
   <% end -%>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
+  <div class="container-login100-form-btn">
+    <%= f.submit "Log in", class:'login100-form-btn'%>
   </div>
-<% end %>
+  <br>
+  <%= render "devise/shared/links" %>
 
-<%= render "devise/shared/links" %>
+<% end %>
+<% if notice %>
+  <p class="alert alert-success"><%= notice %></p>
+<% end %>
+<% if alert %>
+  <p class="alert alert-danger"><%= alert %></p>
+<% end %>
+</div>
+</div>
+
+</div>
