@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :notecollections
   resources :notes
   root to: "notes#index"
   devise_for :users
