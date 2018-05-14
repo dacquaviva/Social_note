@@ -21,6 +21,10 @@
     <%= form.text_area :comment, id: :notecollection_comment %>
   </div>
 
+  <div class="field">
+  <%= collection_check_boxes(:notecollection, :note_ids, @note, :id, :text) %>
+</div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

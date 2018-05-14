@@ -10,5 +10,10 @@
   <%= @notecollection.comment %>
 </p>
 
+<p>
+	<strong>Note:</strong>
+	<%= @notecollection.notes.map {|n| n.text}.join(', ') %>
+</p>
+
 <%= link_to 'Edit', edit_notecollection_path(@notecollection) %> |
 <%= link_to 'Back', notecollections_path %>

@@ -71,6 +71,6 @@ class NotecollectionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def notecollection_params
-      params.require(:notecollection).permit(:name, :comment,:note_ids =>[],)
+      params.require(:notecollection).permit(:name, :comment, :note_ids =>[], :user_ids =>[])
     end
 end
