@@ -1,5 +1,5 @@
 class NotesController < ApplicationController
-  before_action :set_note, only: [:show, :edit, :update, :destroy,:createsharing]
+  before_action :set_note, only: [:show, :edit, :update, :destroy,:newsharing,:createsharing]
   before_action :authenticate_user!
 
   # GET /notes
@@ -63,7 +63,13 @@ class NotesController < ApplicationController
   end
 
    def newsharing
-    @user = User.all
+     @user = User.all - @note.users
+     
+     if @user.empty? 
+        respond_to do |format|
+        format.html { redirect_to @note, notice: 'The note has already been shared with all of   your friends' }
+        end
+    end
    end
 
      def createsharing
