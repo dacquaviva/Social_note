@@ -1,0 +1,8 @@
+<%= form_with url: create_sharing_note_path do |form| %>
+<div class="field">
+<%= collection_check_boxes(:users, :user_ids, @user, :id, :email) %>
+</div>
+<div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
