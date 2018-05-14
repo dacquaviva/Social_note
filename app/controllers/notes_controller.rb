@@ -5,7 +5,7 @@ class NotesController < ApplicationController
   # GET /notes
   # GET /notes.json
   def index
-    @notes = Note.all
+    @notes = current_user.notes
   end
 
   # GET /notes/1

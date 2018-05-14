@@ -4,7 +4,7 @@ class NotecollectionsController < ApplicationController
   # GET /notecollections
   # GET /notecollections.json
   def index
-    @notecollections = Notecollection.all
+    @notecollections = current_user.notecollections
   end
 
   # GET /notecollections/1
@@ -15,17 +15,19 @@ class NotecollectionsController < ApplicationController
   # GET /notecollections/new
   def new
     @notecollection = Notecollection.new
+    @note = current_user.notes
   end
 
   # GET /notecollections/1/edit
   def edit
+    @note = current_user.notes
   end
 
   # POST /notecollections
   # POST /notecollections.json
   def create
     @notecollection = Notecollection.new(notecollection_params)
-
+    @notecollection.users << current_user
     respond_to do |format|
       if @notecollection.save
         format.html { redirect_to @notecollection, notice: 'Notecollection was successfully created.' }
@@ -69,6 +71,6 @@ class NotecollectionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def notecollection_params
-      params.require(:notecollection).permit(:name, :comment)
+      params.require(:notecollection).permit(:name, :comment,:note_ids =>[],)
     end
 end
