@@ -73,7 +73,7 @@ class NotesController < ApplicationController
    end
 
      def createsharing
-     @note.user_ids = params["users"]["user_ids"]
+     @note.user_ids = params["users"]["user_ids"] + (@note.users).map{|u| u.id}
      redirect_to @note
      end
 

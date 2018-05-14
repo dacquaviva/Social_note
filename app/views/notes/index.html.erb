@@ -17,6 +17,7 @@
         <td><%= image_tag note.image.url(:medium) %></td>
         <td><%= link_to 'Show', note %></td>
         <td><%= link_to 'Edit', edit_note_path(note) %></td>
+        <td><%= link_to 'Share', new_sharing_note_path(note)  %></td>
         <td><%= link_to 'Destroy', note, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
