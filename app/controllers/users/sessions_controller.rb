@@ -1,5 +1,4 @@
 class Users::SessionsController < Devise::SessionsController
-
 before_action :set_user, only: [:show, :edit, :update, :destroy,:addfriend]
 before_action :authenticate_user!
   # GET /users
@@ -61,13 +60,14 @@ before_action :authenticate_user!
       format.json { head :no_content }
     end
   end
-     def addfriend
-        User.last.friendships << User.find(params["id"]).inverse_friendships.create
-        respond_to do |format|
-        format.html { redirect_to @user, notice: 'made new friends.' }
-        end
+
+ def addfriend
+    current_user.friendships << User.find(params["id"]).inverse_friendships.create
+    respond_to do |format|
+    format.html { redirect_to @user, notice: 'made new friends.' }
     end
-    
+ end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
