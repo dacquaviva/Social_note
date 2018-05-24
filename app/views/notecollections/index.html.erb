@@ -18,7 +18,7 @@
         <td><%= notecollection.comment %></td>
         <td><%= link_to 'Show', notecollection %></td>
         <td><%= link_to 'Edit', edit_notecollection_path(notecollection) %></td>
-        <td><%= link_to 'Share', new_sharing_notecollection_path(@notecollection)  %></td>
+        <td><%= link_to 'Share', new_sharing_notecollection_path(notecollection)  %></td>
         <td><%= link_to 'Destroy', notecollection, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
