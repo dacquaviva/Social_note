@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   post 'notecollections/:id/users', to: 'notecollections#createsharing' ,as: 'create_sharing_notecollection'
   resources :notecollections
   resources :notes
-  root to: "notes#index"
+  root to: "users#index"
   devise_for :users
     as :user do
        get '/users', to: 'users/sessions#index'
