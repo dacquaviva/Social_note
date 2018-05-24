@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
  has_and_belongs_to_many :notes
  has_and_belongs_to_many :notecollections
- has_many :friendships
+ has_many :friendships, :dependent => :delete_all
   has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
 
   def friends
@@ -34,4 +34,10 @@ class User < ApplicationRecord
   def friend?(user)
     friends.include?(user)
   end
+
+   def delete(user)
+    
+  end
+        
+    
 end
