@@ -63,7 +63,7 @@ class NotesController < ApplicationController
   end
 
    def newsharing
-     @user = User.all - @note.users
+     @user = current_user.friends - @note.users
      
      if @user.empty? 
         respond_to do |format|
