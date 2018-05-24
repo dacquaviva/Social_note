@@ -1,5 +1,5 @@
 class NotecollectionsController < ApplicationController
-  before_action :set_notecollection, only: [:show, :edit, :update, :destroy]
+  before_action :set_notecollection, only: [:show, :edit, :update, :destroy,:newsharing,:createsharing]
 
   # GET /notecollections
   # GET /notecollections.json
@@ -62,6 +62,21 @@ class NotecollectionsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+def newsharing
+     @user = User.all - @notecollection.users
+     
+     if @user.empty? 
+        respond_to do |format|
+        format.html { redirect_to @notecollection, notice: 'The note has already been shared with all of   your friends' }
+        end
+    end
+   end
+
+     def createsharing
+     @notecollection.user_ids = params["users"]["user_ids"] + (@notecollection.users).map{|u| u.id}
+     redirect_to @notecollection
+     end
 
   private
     # Use callbacks to share common setup or constraints between actions.

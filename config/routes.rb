@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
     get 'notes/:id/users', to: 'notes#newsharing' ,as: 'new_sharing_note'
   post 'notes/:id/users', to: 'notes#createsharing' ,as: 'create_sharing_note'
+  get 'notecollections/:id/users', to: 'notecollections#newsharing' ,as: 'new_sharing_notecollection'
+  post 'notecollections/:id/users', to: 'notecollections#createsharing' ,as: 'create_sharing_notecollection'
   resources :notecollections
   resources :notes
   root to: "notes#index"
