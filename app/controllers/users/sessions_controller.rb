@@ -1,10 +1,10 @@
 class Users::SessionsController < Devise::SessionsController
-before_action :set_user, only: [:show, :edit, :update, :destroy,:addfriend]
+before_action :set_user, only: [:show, :edit, :update, :destroy,:addfriend,:acceptfriend,:revokefriend]
 before_action :authenticate_user!
   # GET /users
   # GET /users.json
   def index
-     @users = User.all - [current_user] - current_user.friends - current_user.pending_friends
+     @users = User.all - [current_user]
   end
 
   # GET /users/1
@@ -65,6 +65,28 @@ before_action :authenticate_user!
     current_user.friendships << User.find(params["id"]).inverse_friendships.create
     respond_to do |format|
     format.html { redirect_to @user, notice: 'made new friends.' }
+    end
+ end
+
+
+
+ def acceptfriend
+    current_user.confirm_friend(@user)
+    respond_to do |format|
+    format.html { redirect_to @user, notice: 'Friendship accepted.' }
+    end
+ end
+
+ def revokefriend
+    friendship = Friendship.find_by(user_id:current_user,friend_id:@user)
+    reverse_friendship = Friendship.find_by(user_id:@user,friend_id:current_user)
+    if friendship
+        Friendship.destroy(friendship.id)
+    else
+        Friendship.destroy(reverse_friendship.id)
+    end
+    respond_to do |format|
+    format.html { redirect_to @user, notice: 'Friendship accepted.' }
     end
  end
 

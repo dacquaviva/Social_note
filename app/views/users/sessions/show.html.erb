@@ -14,8 +14,11 @@
 <%= link_to 'Back', users_path %>
 
 <% if current_user.friend_requests.include? @user %>
-    <%= button_to "accept friendship", add_friend_path , {:user=>@user.id} %>
-<% else %>
+    <%= button_to "accept friendship", acc_friend_path , {:user=>@user.id} %>
+     <%= button_to "deniel", rev_friend_path , {:user=>@user.id} %>
+<% elsif current_user.pending_friends.include? @user or current_user.friend?(@user)%>
+    <%= button_to "revoke friendship", rev_friend_path , {:user=>@user.id} %>
+<% else%>
     <%= button_to "add friend", add_friend_path , {:user=>@user.id} %>
 <% end %>
 

@@ -35,9 +35,6 @@ class User < ApplicationRecord
     friends.include?(user)
   end
 
-   def delete(user)
-    
-  end
         
     
 end

@@ -1,6 +1,6 @@
 class NotecollectionsController < ApplicationController
   before_action :set_notecollection, only: [:show, :edit, :update, :destroy,:newsharing,:createsharing]
-
+before_action :authenticate_user!
   # GET /notecollections
   # GET /notecollections.json
   def index

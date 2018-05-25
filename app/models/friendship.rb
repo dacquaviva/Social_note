@@ -1,4 +1,4 @@
 class Friendship < ApplicationRecord
-   belongs_to :user, :dependent => :delete
-  belongs_to :friend, :class_name => "User",:dependent => :delete
+   belongs_to :user
+  belongs_to :friend, :class_name => "User"
 end
