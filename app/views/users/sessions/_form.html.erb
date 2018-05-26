@@ -20,7 +20,10 @@
     <%= form.label :email %>
     <%= form.text_field :email, id: :user_email %>
   </div>
-
+        
+      <div class="field">
+      <%= form.check_box :admin  %>
+      </div>
   <div class="actions">
     <%= form.submit %>
   </div>

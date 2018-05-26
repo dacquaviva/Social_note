@@ -5,8 +5,12 @@ class NotesController < ApplicationController
   # GET /notes
   # GET /notes.json
   def index
+    if current_user.admin?
+         @notes = Note.all
+   else
     @notes = current_user.notes
   end
+ end
 
   # GET /notes/1
   # GET /notes/1.json
