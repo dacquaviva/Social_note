@@ -1,16 +1,27 @@
 <p id="notice"><%= notice %></p>
-<%= image_tag @note.image.url(:medium) %>
-<p>
-  <strong>Text:</strong>
-  <%= @note.text %>
-</p>
-
-<p>
-	<strong>Note shared with:</strong>
-	<%= @note.users.map {|u| u.name}.join(', ') %>
-</p>
 
 
-<%= link_to 'Edit', edit_note_path(@note) %> |
-<%= link_to 'Back', notes_path %> |
-<%= link_to 'Share', new_sharing_note_path(@note)  %>
+
+<div class="col-lg-4 col-lg-offset-4">
+<div class="media">
+  <%= image_tag @note.image.url(:medium), class: "align-self-start mr-3" %>
+
+  <div class="media-body">
+    <h5 class="mt-0"><p>
+      <strong>Text:</strong>
+      <%= @note.text %>
+    </p></h5>
+    <p>
+    	<strong>Note shared with:</strong>
+    	<%= @note.users.map {|u| u.name}.join(', ') %>
+    </p>
+
+  </div>
+
+</div>
+<div class="btn-group btn-group-toggle">
+  <%= link_to 'Edit', edit_note_path(@note), :class => "btn" %>
+  <%= link_to 'Share', new_sharing_note_path(@note), :class => "btn" %>
+  <%= link_to 'Back', notes_path, :class => "btn" %>
+</div>
+</div>
