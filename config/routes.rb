@@ -17,6 +17,7 @@ Rails.application.routes.draw do
         post '/users/:id/acc', to: 'users/sessions#acceptfriend' ,as: 'acc_friend'
         post '/users/:id/add', to: 'users/sessions#addfriend' ,as: 'add_friend'
         post '/users/:id/rev', to: 'users/sessions#revokefriend' ,as: 'rev_friend'
+        delete '/users/:id', to: 'users/sessions#destroy'
 end
 
     get '/friendships', to: 'friendships#index'

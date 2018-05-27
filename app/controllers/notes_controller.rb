@@ -1,7 +1,6 @@
 class NotesController < ApplicationController
   before_action :set_note, only: [:show, :edit, :update, :destroy,:newsharing,:createsharing]
   before_action :authenticate_user!
-
   # GET /notes
   # GET /notes.json
   def index
@@ -68,8 +67,8 @@ class NotesController < ApplicationController
 
    def newsharing
      @user = current_user.friends - @note.users
-     
-     if @user.empty? 
+
+     if @user.empty?
         respond_to do |format|
         format.html { redirect_to @note, notice: 'The note has already been shared with all of   your friends' }
         end
@@ -91,4 +90,5 @@ class NotesController < ApplicationController
     def note_params
       params.require(:note).permit(:text,:image)
     end
+
 end

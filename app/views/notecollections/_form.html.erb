@@ -1,3 +1,11 @@
+<style>
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+</style>
+
 <%= form_with(model: notecollection, local: true) do |form| %>
   <% if notecollection.errors.any? %>
     <div id="error_explanation">
@@ -11,18 +19,18 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group row">
     <%= form.label :name %>
-    <%= form.text_field :name, id: :notecollection_name %>
+    <%= form.text_field :name, id: :notecollection_name, :class => "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group row">
     <%= form.label :comment %>
-    <%= form.text_area :comment, id: :notecollection_comment %>
+    <%= form.text_area :comment, id: :notecollection_comment , :class => "form-control"%>
   </div>
 
-  <div class="field">
-  <%= collection_check_boxes(:notecollection, :note_ids, @note, :id, :text) %>
+  <div class="form-group row">
+  <%= collection_check_boxes(:notecollection, :note_ids, @note, :id, :text, :class => "form-control") %>
   </div>
 
   <div class="actions">

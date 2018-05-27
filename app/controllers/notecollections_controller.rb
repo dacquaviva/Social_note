@@ -8,7 +8,7 @@ before_action :authenticate_user!
         @notecollections = Notecollections.all
     else
     @notecollections = current_user.notecollections
-    end  
+    end
   end
 
   # GET /notecollections/1
@@ -69,8 +69,8 @@ before_action :authenticate_user!
 
 def newsharing
      @user =  current_user.friends - @notecollection.users
-     
-     if @user.empty? 
+
+     if @user.empty?
         respond_to do |format|
         format.html { redirect_to @notecollection, notice: 'The note has already been shared with all of   your friends' }
         end
@@ -92,4 +92,6 @@ def newsharing
     def notecollection_params
       params.require(:notecollection).permit(:name, :comment, :note_ids =>[], :user_ids =>[])
     end
+
+     
 end

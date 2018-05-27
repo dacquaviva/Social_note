@@ -1,11 +1,11 @@
 class FriendshipsController < ApplicationController
 
      before_action :authenticate_user!
-
+     before_action :check_if_admin
   # GET /notes
   # GET /notes.json
   def index
-   @friendships = Friendship.all 
+   @friendships = Friendship.all
  end
 
 
@@ -18,5 +18,10 @@ class FriendshipsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+protected
+  def check_if_admin
+  if !current_user.admin?
+    redirect_to root_path
+  end
+end
 end

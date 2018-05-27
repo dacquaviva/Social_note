@@ -2,7 +2,7 @@
 
 <h1>Friendship</h1>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Request sent from</th>
@@ -19,13 +19,10 @@
         <td><%= user.name %></td>
         <td><%= friend.name %></td>
          <td><%= friendship.confirmed %></td>
-        <td> <%= link_to "Delete frindship", "/friendships/#{friendship.id}/destroy_friendship" , method: :delete, data: { confirm: 'Are you sure?' }%></td>
+        <td> <%= link_to "Delete frindship", "/friendships/#{friendship.id}/destroy_friendship" , method: :delete, data: { confirm: 'Are you sure?' },   :class => "btn" %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
- <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
-
