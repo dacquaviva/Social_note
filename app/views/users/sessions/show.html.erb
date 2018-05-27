@@ -15,7 +15,7 @@
 <%= link_to 'Edit', edit_user_path(@user) , :class => "btn" %>
 <%end%>
 <%= link_to 'Back', users_path , :class => "btn" %>
-
+ <%if !current_user.admin? %>
 <% if current_user.friend_requests.include? @user %>
     <%= button_to "accept friendship      ", acc_friend_path , {:user=>@user.id}%><br>
      <%= button_to "deniel", rev_friend_path , {:user=>@user.id}  %>
@@ -24,7 +24,7 @@
 <% else %>
     <%= button_to "add friend", add_friend_path , {:user=>@user.id} %>
 <% end %>
-
+<% end %>
 <% if current_user == @user  %>
  <%= link_to 'Destroy', user_registration_path, data: { confirm: 'Are you sure?' } ,:method => :delete , :class => "btn"%>
 <% end %>
