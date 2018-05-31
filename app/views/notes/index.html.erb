@@ -24,7 +24,7 @@
           <%= image_tag note.image.url(:medium) %>
         </a>
         <div class="portfolio-caption">
-          <h4><%= note.text %></h4>
+        <h4><%= note.text[0..20] %>...</h4>
         </div>
         </div>
       <% end %>
