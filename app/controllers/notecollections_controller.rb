@@ -5,7 +5,7 @@ before_action :authenticate_user!
   # GET /notecollections.json
   def index
     if current_user.admin?
-        @notecollections = Notecollections.all
+        @notecollections = Notecollection.all
     else
     @notecollections = current_user.notecollections
     end
